@@ -178,4 +178,24 @@ volumes:
 
 ```docker-compose up -d```
 
--Après l'installation vous pouvez accéder aux services en rentrant "http://IP_VM:8080" pour WordPress et "http://IP_VM:8081" pour Zabbix
+
+### 3️⃣ Vérification
+
+- Après l'installation vous pouvez accéder aux services en rentrant "http://IP_VM:8080" pour WordPress et "http://IP_VM:8081" pour Zabbix
+<img width="1336" height="921" alt="image" src="https://github.com/user-attachments/assets/89561192-e0e1-434f-9994-27e3015edd00" /> <img width="1338" height="550" alt="image" src="https://github.com/user-attachments/assets/fbe90c1f-951c-4377-afe9-9a4bcfdb0dff" />
+
+### 4️⃣ Utilisation de GIT
+
+- Voici les commandes pour mettre le devoir sur un dépôt GIT de votre choix
+  
+```
+- git init -b main #Créer le dépôt local et la branche principale
+- git add . #Ajouter les fichiers à Git
+- git commit -m "TP B2 Bilan - Docker, WordPress, Zabbix" #Faire un commit (sauvegarde locale)
+- git remote add origin https://github.com/<votre_user>/<nom_repo>.git #Lier le dépôt local à GitHub
+- git push -u origin main #Envoyer les fichiers sur GitHub.
+```
+
+- (Il se peut que vous ayez du mal à vous authentifier par rapport à votre mot de passe. Je conseille alors de faire un token sur GIT est de le coller dans le terminal pour vous identifiez)
+
+<img width="523" height="203" alt="image" src="https://github.com/user-attachments/assets/fdd06057-6c88-45ff-804f-e5cd4de7be71" />
