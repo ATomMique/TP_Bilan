@@ -199,3 +199,11 @@ volumes:
 - (Il se peut que vous ayez du mal à vous authentifier par rapport à votre mot de passe. Je conseille alors de faire un token sur GIT est de le coller dans le terminal pour vous identifiez)
 
 <img width="523" height="203" alt="image" src="https://github.com/user-attachments/assets/fdd06057-6c88-45ff-804f-e5cd4de7be71" />
+
+### Si vous voulez simplement copier les fichiers et dossiers vous pouvez cloner avec GIT
+
+```git clone https://github.com/ATomMique/TP_Bilan.git```
+
+<img width="295" height="86" alt="image" src="https://github.com/user-attachments/assets/62e00be8-1923-470d-a064-b914a73855fc" />
+
+### Il suffit de lancer le script avec les commandes de la partie 2️⃣
