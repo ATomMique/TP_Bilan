@@ -1,0 +1,82 @@
+version: '3.9'
+
+services:
+  # -----------------------
+  # WORDPRESS + MARIADB
+  # -----------------------
+  db_wordpress:
+    image: mariadb:10.6
+    container_name: db_wordpress
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wp_user
+      MYSQL_PASSWORD: wp_pass
+    volumes:
+      - wp_db:/var/lib/mysql
+
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db_wordpress
+      WORDPRESS_DB_USER: wp_user
+      WORDPRESS_DB_PASSWORD: wp_pass
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - wp_data:/var/www/html
+    depends_on:
+      - db_wordpress
+
+  # -----------------------
+  # ZABBIX + POSTGRES
+  # -----------------------
+  postgres:
+    image: postgres:15
+    container_name: postgres_zabbix
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: zabbix
+      POSTGRES_USER: zabbix
+      POSTGRES_DB: zabbix
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  zabbix-server:
+    image: zabbix/zabbix-server-pgsql:latest
+    container_name: zabbix_server
+    restart: always
+    environment:
+      DB_SERVER_HOST: postgres
+      POSTGRES_USER: zabbix
+      POSTGRES_PASSWORD: zabbix
+      POSTGRES_DB: zabbix
+    ports:
+      - "10051:10051"
+    depends_on:
+      - postgres
+
+  zabbix-frontend:
+    image: zabbix/zabbix-web-nginx-pgsql:latest
+    container_name: zabbix_frontend
+    restart: always
+    environment:
+      DB_SERVER_HOST: postgres
+      POSTGRES_USER: zabbix
+      POSTGRES_PASSWORD: zabbix
+      POSTGRES_DB: zabbix
+      ZBX_SERVER_HOST: zabbix-server
+      PHP_TZ: Europe/Paris
+    ports:
+      - "8081:8080"
+    depends_on:
+      - zabbix-server
+
+volumes:
+  wp_db:
+  wp_data:
+  pg_data:
