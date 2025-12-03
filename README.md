@@ -14,7 +14,7 @@ Le but ? Faire un devoir bilan sur le B2 qui contient du git, du  docker et comm
 
 ##  Contenu du projet
 
-- `install_docker.sh` : script bash pour installer Docker et Docker Compose  
+- `docker_installation.sh` : script bash pour installer Docker et Docker Compose  
 - `docker-compose.yml` : Docker pour WordPress et Zabbix  
 - `README.md` : documentation du projet avec GIT
 
@@ -68,13 +68,13 @@ echo "=== Docker installé avec succès ! ==="
 - Vous devez ensuite rendre ce script éxécutable :
 
 ```bash
-chmod +x install_docker.sh
+chmod +x docker-installation.sh
 ```
 
 - Enfin éxécuter le script pour l'installation de docker
   
 ```bash
-./install_docker.sh
+./docker-installation.sh
 ```
 
 ### 2️⃣ Installalation de WordPress et Zabbix avec docker
